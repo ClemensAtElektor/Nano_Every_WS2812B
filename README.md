@@ -7,6 +7,7 @@ Connect the LED(s) DIN pin to pin D4 (PC6) of the Arduino Nano Every.
 Don't forget to connect its power supply.
 
 **IMPORTANT NOTE**
+
 *This library makes the CPU run at about 12 MHz, adjust baud rates and delay times accordingly!
 
 The reason for this is that the Arduino Nano Every runs at 16 MHz, not at 20 MHz as advertised.
