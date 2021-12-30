@@ -1,7 +1,6 @@
 # CI_WS2812B
-============
 
-ATmega4809 Core-independent driver for WS2812B addressable RGB LEDs (aka NeoPixels).
+Arduino Nano Every (ATmega4809) core-independent driver for WS2812B addressable RGB LEDs (aka NeoPixels).
 No bit-banging, the communication protocol is handled by hardware peripherals, saving lots of CPU cycles.
 
 Connect the LED(s) DIN pin to pin D4 (PC6) of the Arduino Nano Every.
