@@ -6,6 +6,9 @@ No bit-banging, the communication protocol is handled by hardware peripherals, s
 Connect the LED(s) DIN pin to pin D4 (PC6) of the Arduino Nano Every.
 Don't forget to connect its power supply.
 
+This work is based on Microchip's application note [Core Independent Nightlight Using Configurable Custom
+Logic on ATtiny1617](https://ww1.microchip.com/downloads/en/Appnotes/00002387B.pdf) which explains how it works. However, the ATtiny1617 (@ 20 MHz) is a bit different from the ATmega4809 and the Nano Every pinning & clock frequency (16 MHz) plus the timer constraints imposed by the Arduino API required adapting the code in sometimes rather subtle ways. An oscilloscope is practical for debugging the output signal in case you have problems.
+
 **IMPORTANT NOTE**
 
 *This library makes the CPU run at about 12 MHz, adjust baud rates and delay times accordingly!*
