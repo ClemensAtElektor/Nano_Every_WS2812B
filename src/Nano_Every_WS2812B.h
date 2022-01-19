@@ -3,14 +3,23 @@
  * No bit-banging, the communication protocol is handled by hardware peripherals
  * saving lots of CPU cycles.
  *
- * Connect the LED(s) DIN pin to pin D4 (PC6) of the Arduino Nano Every.
- * Don't forget to connect its power supply.
+ * Connect the LED(s) DIN pin to pin D4 (PC6) of the Arduino Nano Every using the
+ * RC network below. With this circuit the MCU can run at normal speed (16 MHz).
+ * Without this circuit you must slow down the MCU to about 12 MHz (25%).
  *
- * IMPORTANT NOTE:
- * This library makes the CPU run at about 12 MHz, adjust baud rates and delay times accordingly!
- * The reason for this is that the Arduino Nano Every runs at 16 MHz, not at 20 MHz as advertised.
- * Now timer prescaler values that work at 20 MHz come out just wrong at 16 MHz :-( Slowing down
- * the CPU fixes this.
+ *        D1
+ *       1N4148
+ * D4 >---|>|--+----+-----> to pin Din of WS2812B
+ *             |    |
+ *        C1  ---   -  R1
+ *     470 pF ---  | | 390 ohm
+ *             |    -
+ *             |    |
+ * GND >-------+----+-----> GND
+ *
+ * Don't forget to connect its +5V power supply.
+ *
+ * If the CPU is slowed down, baud rates and delay times must be adjusted accordingly.
  *
  * This driver uses SPI, TCB2 (TIMERB2), and LUT1 and LUT2 of the CCL.
  *
@@ -29,6 +38,11 @@
  * - Slow down CPU only during SPI transfers?
  * - Make SPI interrupt driven?
  */
+
+/*
+ * Define (uncomment) MCU_SLOW_DOWN if you want to slow down the MCU.
+ */
+//#define MCU_SLOW_DOWN
 
 typedef struct
 {
