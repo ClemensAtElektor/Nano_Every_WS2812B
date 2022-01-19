@@ -12,8 +12,12 @@ You can also copy this folder with all its files into the 'libraries' folder of 
 
 **Usage**
 
-Connect the LED(s) DIN pin to pin D4 (PC6) of the Arduino Nano Every.
-Don't forget to connect its power supply too.
+![RC delay circuit](https://github.com/ClemensAtElektor/Nano_Every_WS2812B/blob/main/extras/ATmega4809-WS2812B-driver-16MHz-RC-network.png)
+
+Connect pin D4 (PC6) of the Arduino Nano Every to the anode (left) of diode D1. Connect DIN pin of the WS2812B LED (string) to the cathode (right) of D1.
+Don't forget to connect the +5V power supply too.
+
+With this circuit the Arduino Nano Every can run at its normal clock speed of 16 MHz (and not 20 MHz as advertised by Arduino). Without this circuit the MCU must be slowed down about 25%. This can be achieved by defining MCU_SLOW_DOWN at the top of the file Nano_Every_WS2812B.h.
 
 **About**
 
@@ -26,9 +30,6 @@ Board: Arduino Nano Every (ATmega4809)
 
 Developped on Arduino IDE 1.8.15
 
-**IMPORTANT NOTE**
+**NOTE**
 
-*This library makes the CPU run at about 12 MHz, adjust baud rates and delay times accordingly!*
-
-The reason for this is that the Arduino Nano Every runs at 16 MHz, not at 20 MHz as advertised.
-Now timer prescaler values that would work at 20 MHz come out slightly wrong at 16 MHz. Slowing down the CPU fixes this.
+*If the CPU is slowed down, adjust baud rates and delay times accordingly!*
