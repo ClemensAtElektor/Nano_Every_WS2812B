@@ -43,7 +43,7 @@ ci_ws2812b_rgb_t rainbow2[] =
 // 1  6  9 14
 // 0  7  8 15
 //
-// Therefor some remapping is done here.
+// Therefore, some remapping is done here.
 void show_row(ci_ws2812b_rgb_t row[], bool up)
 {
   uint8_t j, step;
@@ -66,11 +66,13 @@ void show_row(ci_ws2812b_rgb_t row[], bool up)
 
 void draw(ci_ws2812b_rgb_t bmp[])
 {
+  cli();
   show_row(&bmp[0],true);
   show_row(&bmp[4],false);
   show_row(&bmp[8],true);
   show_row(&bmp[12],false);
-  delayMicroseconds(50); // Latch the data.
+  sei();
+  delayMicroseconds(100); // Latch the data.
 }
 
 void setup(void)
