@@ -68,12 +68,14 @@ void CI_WS2812B::write(uint8_t red, uint8_t green, uint8_t blue)
 
 void CI_WS2812B::write_string(int number_of_leds, ci_ws2812b_rgb_t led_data[])
 {
+  cli();
   for (int i=0; i<number_of_leds; i++)
   {
     // Transmit 24-bit RGB color data 8 bits at a time.
     write(led_data[i].g,led_data[i].r,led_data[i].b);
   }
-  delayMicroseconds(50); // Latch the data.
+  sei();
+  delayMicroseconds(100); // Latch the data.
 }
 
 void CI_WS2812B::TCB2_init(void)
