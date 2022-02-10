@@ -24,12 +24,13 @@ void draw(uint8_t color, uint8_t intensity, uint8_t number_of_leds)
   else blue = 0;
 
   // Write the data to the LEDs.
+  cli();
   for (uint8_t i=0; i<number_of_leds; i++)
   {
     LEDs.write(red,green,blue);
   }
-  
-  delayMicroseconds(50); // Latch the data.
+  sei();
+  delayMicroseconds(100); // Latch the data.
 }
 
 void setup(void)
