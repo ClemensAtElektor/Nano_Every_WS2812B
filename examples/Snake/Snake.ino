@@ -16,6 +16,7 @@ void draw(uint8_t color, uint8_t intensity, uint16_t snake, uint8_t number_of_le
 {
   uint8_t red, green, blue;
   
+  cli();
   for (uint16_t i=0x0001; i!=0; i<<=1)
   {
     red = 0;
@@ -29,7 +30,8 @@ void draw(uint8_t color, uint8_t intensity, uint16_t snake, uint8_t number_of_le
     }
     LEDs.write(red,green,blue);
   }
-  delayMicroseconds(50); // Latch the data.
+  sei();
+  delayMicroseconds(100); // Latch the data.
 }
 
 void setup(void)
