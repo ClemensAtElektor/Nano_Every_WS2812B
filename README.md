@@ -17,6 +17,8 @@ You can also copy this folder with all its files into the 'libraries' folder of 
 Connect pin D4 (PC6) of the Arduino Nano Every to the anode (left) of diode D1. Connect DIN pin of the WS2812B LED (string) to the cathode (right) of D1.
 Don't forget to connect the +5V power supply too.
 
+![RC delay circuit](https://github.com/ClemensAtElektor/Nano_Every_WS2812B/blob/main/extras/Arduino-Nano-Every-WS2812B-driver-16MHz-RC-network.png)
+
 With this circuit the Arduino Nano Every can run at its normal clock speed of 16 MHz (and not 20 MHz as advertised by Arduino). Without this circuit the MCU must be slowed down about 25%. This can be achieved by defining MCU_SLOW_DOWN at the top of the file Nano_Every_WS2812B.h.
 
 **About**
