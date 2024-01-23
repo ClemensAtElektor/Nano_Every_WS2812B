@@ -72,7 +72,7 @@ void CI_WS2812B::write_string(int number_of_leds, ci_ws2812b_rgb_t led_data[])
   for (int i=0; i<number_of_leds; i++)
   {
     // Transmit 24-bit RGB color data 8 bits at a time.
-    write(led_data[i].g,led_data[i].r,led_data[i].b);
+    write(led_data[i].r,led_data[i].g,led_data[i].b); // note: write() function will transmit data in (g,r,b) order
   }
   sei();
   delayMicroseconds(100); // Latch the data.
